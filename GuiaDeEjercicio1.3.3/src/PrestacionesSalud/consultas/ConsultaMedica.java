@@ -32,12 +32,22 @@ public class ConsultaMedica extends PrestacionSalud {
     }
 
     @Override
+    public String toString() {
+        return "ConsultaMedica{" +
+                "especialidad='" + especialidad + '\'' +
+                ", porcentajeAdicional=" + porcentajeAdicional +
+                "} " + super.toString();
+    }
+
+    @Override
     public void mostrarInformacion() {
+
         super.mostrarInformacion();
     }
 
     @Override
     public double calcularValorFinal() {
+
         return 0;
     }
 }

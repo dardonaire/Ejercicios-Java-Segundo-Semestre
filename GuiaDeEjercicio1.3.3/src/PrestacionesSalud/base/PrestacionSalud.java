@@ -37,12 +37,24 @@ public abstract class PrestacionSalud {
     public void setValorBase(double valorBase) {
         this.valorBase = valorBase;
     }
+
+    @Override
+    public String toString() {
+        return "PrestacionSalud{" +
+                "identificador='" + identificador + '\'' +
+                ", nombrePaciente='" + nombrePaciente + '\'' +
+                ", valorBase=" + valorBase +
+                '}';
+    }
+
     public void mostrarInformacion(){
+        System.out.println(this.toString());
 
     }
     public abstract double calcularValorFinal();
 
     public boolean coincideConPaciente(String texto){
+        return false;
 
     }
 
