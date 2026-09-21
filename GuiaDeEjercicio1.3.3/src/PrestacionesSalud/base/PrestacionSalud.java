@@ -54,8 +54,9 @@ public abstract class PrestacionSalud {
     public abstract double calcularValorFinal();
 
     public boolean coincideConPaciente(String texto){
-        return false;
+        return this.nombrePaciente.toLowerCase().contains(texto.toLowerCase());
 
     }
+
 
 }

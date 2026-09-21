@@ -33,11 +33,17 @@ public class SesionKinesiologia extends PrestacionSalud {
 
     @Override
     public void mostrarInformacion() {
-        super.mostrarInformacion();
+        System.out.println("Resumen Paciente");
+        System.out.println("IDentificador:"+ super.getIdentificador());
+        System.out.println("Nombre Paciente:" + super.getNombrePaciente());
+        System.out.println("Valor base:" + super.getValorBase());
+        System.out.println("Duración de minutos:" + duracionMinutos);
+        System.out.println("Valor adicional al minuto:" + valorAdicionalMinuto);
     }
 
     @Override
     public double calcularValorFinal() {
-        return 0;
+        return super.getValorBase() + (this.duracionMinutos * this.valorAdicionalMinuto);
+
     }
 }

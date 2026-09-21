@@ -41,13 +41,16 @@ public class ConsultaMedica extends PrestacionSalud {
 
     @Override
     public void mostrarInformacion() {
-
-        super.mostrarInformacion();
+        System.out.println("Resumen Paciente");
+        System.out.println("IDentificador:"+ super.getIdentificador());
+        System.out.println("Nombre Paciente:" + super.getNombrePaciente());
+        System.out.println("Valor base:" + super.getValorBase());
+        System.out.println("Especialidad:" + especialidad);
+        System.out.println("Porcentaje:" + porcentajeAdicional);
     }
 
     @Override
     public double calcularValorFinal() {
-
-        return 0;
+        return super.getValorBase() + (super.getValorBase() * this.porcentajeAdicional/100);
     }
 }
