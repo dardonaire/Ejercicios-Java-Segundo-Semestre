@@ -1,25 +1,41 @@
 package SistemaInversionFinanciera.instrumentos;
 
+import SistemaInversionFinanciera.Interfaces.Liquidable;
 import SistemaInversionFinanciera.base.InstruementoFinanciero;
 
-public class DepositoPlazo extends InstruementoFinanciero {
-    private double tazaInteres;
+public class DepositoPlazo extends InstruementoFinanciero implements Liquidable {
+    private double tasainteres;
     private int plazomeses;
+
+    public DepositoPlazo(double tasainteres, int plazomeses) {
+        this.tasainteres = tasainteres;
+        this.plazomeses = plazomeses;
+    }
 
     public DepositoPlazo() {
     }
 
-    public DepositoPlazo(double tazaInteres, int plazomeses) {
-        this.tazaInteres = tazaInteres;
+    public DepositoPlazo(String codigo, String nombreInversion, double invertido, double tasainteres, int plazomeses) {
+        super(codigo, nombreInversion, invertido);
+        this.tasainteres = tasainteres;
         this.plazomeses = plazomeses;
     }
 
-    public double getTazaInteres() {
-        return tazaInteres;
+
+    @Override
+    public String toString() {
+        return "DepositoPlazo{" +
+                "tasaInteres=" + tasainteres +
+                ", plazomeses=" + plazomeses +
+                '}';
     }
 
-    public void setTazaInteres(double tazaInteres) {
-        this.tazaInteres = tazaInteres;
+    public double getTasainteres() {
+        return tasainteres;
+    }
+
+    public void setTasainteres(double tasainteres) {
+        this.tasainteres = tasainteres;
     }
 
     public int getPlazomeses() {
@@ -31,25 +47,18 @@ public class DepositoPlazo extends InstruementoFinanciero {
     }
 
     @Override
-    public String toString() {
-        return "DepositoPlazo{" +
-                "tazaInteres=" + tazaInteres +
-                ", plazomeses=" + plazomeses +
-                '}';
-    }
-
-    @Override
-    public void mostrarResumen() {
-        super.mostrarResumen();
-    }
-
-    @Override
     public double calcularRentabilidad() {
-        return 0;
+        return (super.getInvertido() * this.tasainteres/ 100) * this.plazomeses;
+
     }
 
     @Override
     public String obtenerNivelRiesgo() {
-        return "";
+        return "bajo";
+    }
+
+    @Override
+    public double liquidar() {
+        return super.getInvertido() + calcularRentabilidad();
     }
 }

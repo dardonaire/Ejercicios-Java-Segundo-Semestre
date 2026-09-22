@@ -3,12 +3,12 @@ package SistemaInversionFinanciera.base;
 public abstract class InstruementoFinanciero {
     private String codigo;
     private String nombreInversion;
-    private String invertido;
+    private double invertido;
 
     public InstruementoFinanciero() {
     }
 
-    public InstruementoFinanciero(String codigo, String nombreInversion, String invertido) {
+    public InstruementoFinanciero(String codigo, String nombreInversion, double invertido) {
         this.codigo = codigo;
         this.nombreInversion = nombreInversion;
         this.invertido = invertido;
@@ -30,11 +30,11 @@ public abstract class InstruementoFinanciero {
         this.nombreInversion = nombreInversion;
     }
 
-    public String getInvertido() {
+    public double getInvertido() {
         return invertido;
     }
 
-    public void setInvertido(String invertido) {
+    public void setInvertido(double invertido) {
         this.invertido = invertido;
     }
 
@@ -48,6 +48,7 @@ public abstract class InstruementoFinanciero {
     }
 
     public void mostrarResumen(){
+        System.out.println(this.toString());
 
     }
 

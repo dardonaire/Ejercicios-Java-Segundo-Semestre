@@ -1,8 +1,9 @@
 package SistemaInversionFinanciera.instrumentos;
 
+import SistemaInversionFinanciera.Interfaces.Liquidable;
 import SistemaInversionFinanciera.base.InstruementoFinanciero;
 
-public class Accion extends InstruementoFinanciero {
+public class Accion extends InstruementoFinanciero implements Liquidable {
     private double precioCompra;
     private double precioActual;
     private int cantidadAcciones;
@@ -16,7 +17,7 @@ public class Accion extends InstruementoFinanciero {
         this.cantidadAcciones = cantidadAcciones;
     }
 
-    public Accion(String codigo, String nombreInversion, String invertido, double precioCompra, double precioActual, int cantidadAcciones) {
+    public Accion(String codigo, String nombreInversion, double invertido, double precioCompra, double precioActual, int cantidadAcciones) {
         super(codigo, nombreInversion, invertido);
         this.precioCompra = precioCompra;
         this.precioActual = precioActual;
@@ -24,18 +25,29 @@ public class Accion extends InstruementoFinanciero {
     }
 
     @Override
-    public void mostrarResumen() {
-        super.mostrarResumen();
+    public String toString() {
+        return "Accion{" +
+                "precioCompra=" + precioCompra +
+                ", precioActual=" + precioActual +
+                ", cantidadAcciones=" + cantidadAcciones +
+                "} " + super.toString();
     }
+
+
 
     @Override
     public double calcularRentabilidad() {
-        return 0;
+        return (this.precioActual - this.precioCompra * this.cantidadAcciones);
+    }
+
+    @Override
+    public double liquidar() {
+        return this.precioActual + this.cantidadAcciones;
     }
 
     @Override
     public String obtenerNivelRiesgo() {
-        return "";
+        return "Alto";
     }
 
 }
