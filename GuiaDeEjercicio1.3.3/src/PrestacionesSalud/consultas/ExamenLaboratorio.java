@@ -47,7 +47,7 @@ public class ExamenLaboratorio extends PrestacionSalud {
         System.out.println("Resumen Paciente");
         System.out.println("IDentificador:"+ super.getIdentificador());
         System.out.println("Nombre Paciente:" + super.getNombrePaciente());
-        System.out.println("Valor base:" + super.getValorBase());
+        System.out.println("Valor GestionPolizaSeguros.GestionPolizaSeguros.base.base:" + super.getValorBase());
         System.out.println("Examen:" + examen);
         System.out.println("Condicion Urgencia:" + condicionUrgencia);
         System.out.println("Recargo:" + recargo);
