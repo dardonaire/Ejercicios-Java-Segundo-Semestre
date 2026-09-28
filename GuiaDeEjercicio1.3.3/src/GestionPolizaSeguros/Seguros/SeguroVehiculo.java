@@ -2,7 +2,7 @@ package GestionPolizaSeguros.Seguros;
 
 import GestionPolizaSeguros.base.PolizaSeguro;
 
-public class SeguroVehiculo extends PolizaSeguro {
+public class SeguroVehiculo extends PolizaSeguro implements Renovable{
 
     private String marca;
     private int ano;
@@ -11,30 +11,36 @@ public class SeguroVehiculo extends PolizaSeguro {
     public SeguroVehiculo() {
     }
 
-    public SeguroVehiculo(String marca, int ano, double valorComercial) {
+    public SeguroVehiculo(int numeroPoliza, String nombreCliente,
+                          double montoAsegurado, String marca,
+                          int ano, double valorComercial) {
+
+        super(numeroPoliza, nombreCliente, montoAsegurado);
         this.marca = marca;
         this.ano = ano;
         this.valorComercial = valorComercial;
-    }
-
-    public SeguroVehiculo(int numeroPoliza, String nombreCleinte, double montoAsegurado, String marca, int ano, double valorComercial) {
-        super(numeroPoliza, nombreCleinte, montoAsegurado);
-        this.marca = marca;
-        this.ano = ano;
-        this.valorComercial = valorComercial;
-    }
-
-    public SeguroVehiculo(int numeroPoliza, String nombreCleinte, double montoAsegurado) {
-        super(numeroPoliza, nombreCleinte, montoAsegurado);
     }
 
     @Override
     public double calcularPrima() {
-        return 0;
+        if (this.ano >= 2020) {
+            return this.valorComercial * 2 / 100;
+        } else {
+            return this.valorComercial * 3 / 100;
+        }
     }
 
     @Override
     public String obtenerTipoCobertura() {
-        return "";
+        return "Cobertura para vehículo " + this.marca;
+    }
+
+    @Override
+    public boolean renovar(int cantidadMeses) {
+        if (cantidadMeses > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

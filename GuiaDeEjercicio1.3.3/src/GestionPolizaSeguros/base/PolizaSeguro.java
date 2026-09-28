@@ -1,16 +1,17 @@
 package GestionPolizaSeguros.base;
 
 public abstract class PolizaSeguro {
-    private  int numeroPoliza;
-    private String nombreCleinte;
+
+    private int numeroPoliza;
+    private String nombreCliente;
     private double montoAsegurado;
 
     public PolizaSeguro() {
     }
 
-    public PolizaSeguro(int numeroPoliza, String nombreCleinte, double montoAsegurado) {
+    public PolizaSeguro(int numeroPoliza, String nombreCliente, double montoAsegurado) {
         this.numeroPoliza = numeroPoliza;
-        this.nombreCleinte = nombreCleinte;
+        this.nombreCliente = nombreCliente;
         this.montoAsegurado = montoAsegurado;
     }
 
@@ -22,12 +23,12 @@ public abstract class PolizaSeguro {
         this.numeroPoliza = numeroPoliza;
     }
 
-    public String getNombreCleinte() {
-        return nombreCleinte;
+    public String getNombreCliente() {
+        return nombreCliente;
     }
 
-    public void setNombreCleinte(String nombreCleinte) {
-        this.nombreCleinte = nombreCleinte;
+    public void setNombreCliente(String nombreCliente) {
+        this.nombreCliente = nombreCliente;
     }
 
     public double getMontoAsegurado() {
@@ -42,19 +43,21 @@ public abstract class PolizaSeguro {
     public String toString() {
         return "PolizaSeguro{" +
                 "numeroPoliza=" + numeroPoliza +
-                ", nombreCleinte='" + nombreCleinte + '\'' +
+                ", nombreCliente='" + nombreCliente + '\'' +
                 ", montoAsegurado=" + montoAsegurado +
                 '}';
     }
 
-    public void mostrarInformacion(){
+    public void mostrarInformacion() {
         System.out.println(this.toString());
+    }
 
+    public boolean coincideConCliente(String texto) {
+        return this.nombreCliente.toLowerCase()
+                .contains(texto.toLowerCase());
     }
 
     public abstract double calcularPrima();
 
     public abstract String obtenerTipoCobertura();
-
-
 }

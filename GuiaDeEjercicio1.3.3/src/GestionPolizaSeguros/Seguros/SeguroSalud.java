@@ -2,17 +2,19 @@ package GestionPolizaSeguros.Seguros;
 
 import GestionPolizaSeguros.base.PolizaSeguro;
 
-public class SeguroSalud extends PolizaSeguro {
+public class SeguroSalud extends PolizaSeguro implements Renovable {
 
     private int edadAsegurado;
     private double porcentajeCobertura;
 
-
     public SeguroSalud() {
     }
 
-    public SeguroSalud(int numeroPoliza, String nombreCleinte, double montoAsegurado, int edadAsegurado, double porcentajeCobertura) {
-        super(numeroPoliza, nombreCleinte, montoAsegurado);
+    public SeguroSalud(int numeroPoliza, String nombreCliente,
+                       double montoAsegurado, int edadAsegurado,
+                       double porcentajeCobertura) {
+
+        super(numeroPoliza, nombreCliente, montoAsegurado);
         this.edadAsegurado = edadAsegurado;
         this.porcentajeCobertura = porcentajeCobertura;
     }
@@ -35,15 +37,24 @@ public class SeguroSalud extends PolizaSeguro {
 
     @Override
     public double calcularPrima() {
-        if (this.edadAsegurado > 0 && this.edadAsegurado < 60) {
-            return (super.getMontoAsegurado() * 2 /100);
-    }else {
-            return (this.edadAsegurado * 3 / 100);
+        if (this.edadAsegurado < 60) {
+            return super.getMontoAsegurado() * 2 / 100;
+        } else {
+            return super.getMontoAsegurado() * 3 / 100;
         }
     }
 
     @Override
     public String obtenerTipoCobertura() {
-        return "";
+        return "Cobertura de salud: " + this.porcentajeCobertura + "%";
     }
-}
+
+    @Override
+    public boolean renovar(int cantidadMeses) {
+        if (cantidadMeses > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    }
