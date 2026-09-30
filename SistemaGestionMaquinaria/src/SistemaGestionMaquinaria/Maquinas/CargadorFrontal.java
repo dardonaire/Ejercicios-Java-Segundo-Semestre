@@ -32,3 +32,4 @@ public class CargadorFrontal extends Maquinaria {
         return costo;
     }
 }
+
