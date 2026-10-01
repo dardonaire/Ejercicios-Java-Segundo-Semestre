@@ -13,7 +13,7 @@ public abstract class Maquinaria {
         this.setCodigoMaquina(codigoMaquina);
         //this.horasUso = horasUso;
         this.setHorasUso(horasUso);
-        this.potencia = potencia;
+        this.setPotencia(potencia);
     }
 
     public String getCodigoMaquina() {
@@ -52,10 +52,9 @@ public abstract class Maquinaria {
 
     @Override
     public String toString() {
-        return "Maquinaria{" +
-                "codigoMaquina='" + codigoMaquina + '\'' +
-                ", horasUso=" + horasUso +
-                '}';
+        return "Maquinaria" +
+                "Codigo: '" + codigoMaquina + "|" +
+                "Horas: " + horasUso;
     }
 
     public abstract double calcularCosto();

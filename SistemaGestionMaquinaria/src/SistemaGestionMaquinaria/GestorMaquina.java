@@ -25,9 +25,10 @@ public class GestorMaquina {
 
         //nombre de la lista + .add que en sus parametros recibe el objeto
         listaMaquinarias.add(maquinaria);
-        System.out.println("Máquinaria registrada correctamente ");
+        System.out.println(maquinaria.getCodigoMaquina()+ "(" + maquinaria.getClass().getSimpleName() + ")"+"registrada correctamente ");
     }
 //creo el metodo para buscar dentro de la lista, el tipo de dato q retorna es de tipo lista
+
     public ArrayList<Maquinaria> buscarMaquinaria (String criterio){
         //creo una nueva lista para guardar y retornar las coincidencias
         ArrayList<Maquinaria> resultado = new ArrayList<>();
@@ -43,6 +44,12 @@ public class GestorMaquina {
         }
         return resultado;
 
+    }
+
+    public void listarMaquinaria(){
+        for (Maquinaria maquina : listaMaquinarias) {
+            System.out.println(maquina);
+        }
     }
 
 

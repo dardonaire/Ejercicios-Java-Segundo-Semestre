@@ -6,9 +6,20 @@ import SistemaGestionMaquinaria.base.Maquinaria;
 
 import java.util.ArrayList;
 
+/* Programacion Orientada a Objetos:
+Este programa ordena la solucion mediante clases y objetos, permitiendo ocupar encapsulamiento, herencias y polimorfismo
+
+A diferencia de la programacion que sigue intrucciones paso a paso, en poo podemos maostarr la informacion mediante objetos
+con sus atributos y metodos.
+
+Ademas, los objetos pueden reutilizar metodos mediante la herencia, en este caso como Excavadora y CargadorFrontal
+
+ */
+
 
 public class main {
     public static void main (String[] args) {
+        try {
 
         Excavadora excavadora1 = new Excavadora("MAQ-EX01", 3200, 210,
                 18.5,false);
@@ -33,24 +44,27 @@ public class main {
         ArrayList<Maquinaria> busqueda = gestor1.buscarMaquinaria("MAQ-EX01");
 
         for (Maquinaria maquinaria : busqueda){
-            if (maquinaria instanceof Excavadora) {
-                Excavadora excavadora = (Excavadora) maquinaria;
-                System.out.println(excavadora.getCodigoMaquina());
-                System.out.println(excavadora.getHorasUso());
-                System.out.println(excavadora.getPotencia());
-                System.out.println(excavadora.getPeso());
-                System.out.println(excavadora.isMantencionAlDia());
-                System.out.println(excavadora.certificacionActiva());
-                System.out.println(excavadora.calcularCosto());
+            System.out.println(maquinaria);
+            System.out.println("Costo: $" + maquinaria.calcularCosto());
 
-            }
+            System.out.println("=== BUSQUEDA POR CODIGO: MAQ-EX01 === " );
+            Excavadora excavadora = (Excavadora) maquinaria;
+            System.out.println("Tipo: Excavadora " + "Codigo: " + excavadora.getCodigoMaquina() +" Horas: " + excavadora.getHorasUso()
+            + "  Potencia: " + excavadora.getPotencia() +" HP"
+            + "  Peso: " + excavadora.getPeso()+ " ton" + "  Mantencion al dia: " + (excavadora.isMantencionAlDia() ? "Si" : "NO " ) +
+                    "  Certificación seguridad: " + (excavadora.isCertificacionActiva() ? "Si" : "No")+ "  Costo Servicio: " + excavadora.calcularCosto());
 
 
 
+        System.out.println("===Listado de MAquinaria===");
+        gestor1.listarMaquinaria();
 
-    }
 
-}
-}
+
+
+        }} catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+}}
 
 
