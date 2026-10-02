@@ -53,8 +53,8 @@ public abstract class Clase {
 
     @Override
     public String toString() {
-        return "Clase: " +
-                "Nombre: " + nombre + '\'' +
+        return  "Clase: " + getClass().getSimpleName() + "|"  +
+                "Nombre: " + nombre + "|" +
                 "Cupo máximo: " + cupoMaximo;
     }
 

@@ -44,8 +44,6 @@ public class main {
         ArrayList<Maquinaria> busqueda = gestor1.buscarMaquinaria("MAQ-EX01");
 
         for (Maquinaria maquinaria : busqueda){
-            System.out.println(maquinaria);
-            System.out.println("Costo: $" + maquinaria.calcularCosto());
 
             System.out.println("=== BUSQUEDA POR CODIGO: MAQ-EX01 === " );
             Excavadora excavadora = (Excavadora) maquinaria;

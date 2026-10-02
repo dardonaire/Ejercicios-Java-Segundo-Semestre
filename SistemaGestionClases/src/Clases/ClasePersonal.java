@@ -14,6 +14,7 @@ public class ClasePersonal extends Clase implements Cancelable{
     public ClasePersonal(String nombre, int cupoMaximo, int duracion, String nombreInstructor, boolean cuentaEvaluacion, boolean cancelacionActiva) {
         super(nombre, cupoMaximo, duracion);
 //        this.nombreInstructor = nombreInstructor;
+        this.setNombreInstructor(nombreInstructor);
         this.setNombre(nombre);
 //        this.cuentaEvaluacion = cuentaEvaluacion;
         this.setCuentaEvaluacion(cuentaEvaluacion);
@@ -26,6 +27,10 @@ public class ClasePersonal extends Clase implements Cancelable{
     }
 
     public void setNombreInstructor(String nombreInstructor) {
+        if (nombreInstructor == null || nombreInstructor.trim().isEmpty()){
+            throw new IllegalArgumentException("EL nombre no puede estar vacio");
+        }
+
         this.nombreInstructor = nombreInstructor;
     }
 
